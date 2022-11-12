@@ -20,15 +20,7 @@ ssh $1 "chgrp -R $2 /home/$2/.ssh"
 echo 'Installing Java JDK 11...'
 ssh $1 "apt install -y openjdk-11-jdk-headless"
 echo 'Installing Maven...'
-cd ~
-curl https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz --output apache-maven-3.8.6-bin.tar.gz
-#wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
-mv ~/apache-maven-3.8.6-bin.tar.gz /usr/share/apache-maven-3.8.6-bin.tar.gz
-cd /usr/share
-tar xvfz apache-maven-3.8.6-bin.tar.gz
-rm apache-maven-3.8.6-bin.tar.gz
-rm /usr/bin/mvn
-ln -s /usr/share/apache-maven-3.8.6/bin/mvn /usr/bin/mvn
+ssh $1 "apt install -y maven"
 echo "Installing Net Tools..."
 ssh $1 "apt install -y net-tools"
 echo "Installing NCDU..."
